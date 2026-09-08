@@ -57,19 +57,19 @@ export default function App() {
           {/* First Half */}
           <div className="flex shrink-0 items-center">
             <span className="inline-block pr-8 sm:pr-14">
-              Steven &middot; Paul &middot; Jobs
+              Steven &middot; Paul &middot; Jobs &middot;
             </span>
             <span className="inline-block pr-8 sm:pr-14">
-              Steven &middot; Paul &middot; Jobs
+              Steven &middot; Paul &middot; Jobs &middot;
             </span>
           </div>
           {/* Second Half (Identical for seamless infinite continuous loop) */}
           <div className="flex shrink-0 items-center">
             <span className="inline-block pr-8 sm:pr-14">
-              Steven &middot; Paul &middot; Jobs
+              Steven &middot; Paul &middot; Jobs &middot;
             </span>
             <span className="inline-block pr-8 sm:pr-14">
-              Steven &middot; Paul &middot; Jobs
+              Steven &middot; Paul &middot; Jobs &middot;
             </span>
           </div>
         </div>
