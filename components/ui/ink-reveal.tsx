@@ -42,10 +42,12 @@ interface Stamp {
   rmax: number;
 }
 
+const DEFAULT_MASK_COLOR: [number, number, number] = [252, 250, 248];
+
 export default function InkReveal({
   imageSrc,
   revealImageSrc,
-  maskColor = [252, 250, 248],
+  maskColor = DEFAULT_MASK_COLOR,
   brushSize = 128,
   lifetime = 600,
   rStart = 10,
@@ -99,14 +101,13 @@ export default function InkReveal({
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     dprRef.current = dpr;
-    const rect = parent.getBoundingClientRect();
-    const w = rect.width;
-    const h = rect.height;
+    // Use clientWidth and clientHeight to get the untransformed CSS layout box,
+    // avoiding shrinking caused by CSS transform animations (e.g. scale(1.03))
+    const w = parent.clientWidth || Math.round(parent.getBoundingClientRect().width);
+    const h = parent.clientHeight || Math.round(parent.getBoundingClientRect().height);
     dimsRef.current = { w, h };
     canvas.width = Math.round(w * dpr);
     canvas.height = Math.round(h * dpr);
-    canvas.style.width = `${w}px`;
-    canvas.style.height = `${h}px`;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
